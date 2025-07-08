@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="page_title">Portfolio Abderrahim - Développeur Web Pro</title>
+    <meta name="description" data-i18n="meta_description" content="Portfolio professionnel d'Abderrahim, développeur web full stack spécialisé en UI/UX, programmation embarquée et IA. Découvrez mes projets innovants et mes compétences."/>
+    <meta name="keywords" data-i18n="meta_keywords" content="Abderrahim Es-Sousy, développeur web, full stack, UI/UX, programmation embarquée, IA, portfolio, projets, compétences, Maroc, Casablanca">
+    <meta name="author" content="Abderrahim Es-Sousy">
+
+    <link rel="icon" href="img/favicon.png" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <link href="style.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<button class="hamburger-btn" aria-label="Ouvrir le menu de navigation">
+    <i class="fas fa-bars"></i>
+</button>
+
+<div class="top-controls">
+    <div id="language-switcher" class="d-flex align-items-center me-3">
+        <button class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
+        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        <button class="lang-btn" data-lang="ar" aria-label="العربية">AR</button>
+    </div>
+    <div class="form-check form-switch dark-mode-toggle-container">
+        <input class="form-check-input" type="checkbox" id="darkModeToggle" role="switch" aria-checked="false">
+        <label class="form-check-label" for="darkModeToggle" aria-label="Activer le mode sombre">
+            <i id="darkModeIcon" class="fas fa-sun"></i>
+        </label>
+    </div>
+</div>
+
+<div id="sideNav" class="side-nav">
+    <button class="close-btn" aria-label="Fermer le menu de navigation">&times;</button>
+    <div class="side-nav-header">
+        <a class="side-nav-brand" href="#">ABDERRAHIM</a>
+    </div>
+    <ul class="side-nav-links">
+        <li><a class="nav-link active" aria-current="page" href="#accueil" data-i18n="nav_home">Accueil</a></li>
+        <li><a class="nav-link" href="#about" data-i18n="nav_about">À Propos</a></li>
+        <li><a class="nav-link" href="#competences" data-i18n="nav_skills">Compétences</a></li>
+        <li><a class="nav-link" href="#timeline" data-i18n="nav_timeline">Parcours</a></li>
+        <li><a class="nav-link" href="#projects" data-i18n="nav_projects">Projets</a></li>
+        <li><a class="nav-link" href="#contact" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+</div>
+
+<div class="theme-switcher">
+    <button class="theme-toggle-btn" aria-label="Changer de thème de couleur"><i class="fas fa-palette"></i></button>
+    <div class="theme-options">
+        <button class="theme-option red active" data-theme-color="#C2002E" aria-label="Thème Rouge"></button>
+        <button class="theme-option blue" data-theme-color="#007bff" aria-label="Thème Bleu"></button>
+        <button class="theme-option green" data-theme-color="#28a745" aria-label="Thème Vert"></button>
+        <button class="theme-option purple" data-theme-color="#6f42c1" aria-label="Thème Violet"></button>
+    </div>
+</div>
+
+<header id="accueil">
+    <div id="particles-js"></div>
+    <div class="content" data-aos="fade-up" data-aos-duration="1200">
+        <img src="img/abderrahim.jpg" alt="Photo de profil d'Abderrahim" class="rounded-circle profile-img" data-aos="zoom-in" data-aos-delay="300" />
+        <h1>ABDERRAHIM<br>ES-SOUSY</h1>
+        <div class="typed-text"></div>
+        <a href="#projects" class="btn btn-primary mt-4 btn-glow" data-aos="zoom-in" data-aos-delay="600" data-i18n="discover_projects_btn">Découvrez mes Projets <i class="fas fa-arrow-right ms-2"></i></a>
+    </div>
+</header>
+
+<section id="about" data-aos="fade-up">
+    <h2 data-i18n="about_title">À Propos de Moi</h2>
+    <svg class="section-underline-svg" viewBox="0 0 100 5" preserveAspectRatio="none"><path d="M0 2.5 L100 2.5" stroke="var(--red-primary)" stroke-width="3" fill="none" /></svg>
+    <div class="about-content">
+        <p data-i18n="about_description">
+            Jeune lauréat motivé avec un diplôme Bac+3 en Systèmes Informatiques Embarqués, possédant une solide formation en développement web, réseaux, programmation embarquée et bases de données. Capable de concevoir et développer des applications et systèmes informatiques efficaces et adaptés aux besoins.
+        </p>
+    </div>
+</section>
+
+<section id="competences">
+    <h2 data-i18n="skills_title">Mes Compétences</h2>
+    <svg class="section-underline-svg" viewBox="0 0 100 5" preserveAspectRatio="none"><path d="M0 2.5 L100 2.5" stroke="var(--red-primary)" stroke-width="3" fill="none" /></svg>
+    <p class="competences-intro" data-i18n="skills_intro">
+        Mon expertise s'étend sur plusieurs domaines clés du développement web et embarqué, combinant maîtrise technique et compétences transversales essentielles pour la réussite de tout projet.
+    </p>
+
+    <div class="competences-container">
+        <div class="technical-skills">
+            <div class="skills-grid">
+                </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5" data-aos="fade-up">
+        <button type="button" class="btn btn-glow" data-bs-toggle="modal" data-bs-target="#skillsModal" data-i18n="detailed_skills_btn">
+            Compétences Techniques Détaillées <i class="fas fa-plus-circle ms-2"></i>
+        </button>
+    </div>
+
+    <div class="cv-showcase" data-aos="fade-up" data-aos-delay="200">
+        <div class="cv-content">
+            <i class="fas fa-file-alt cv-icon"></i>
+            <h3 data-i18n="cv_title">Mon CV Détaillé</h3>
+            <p data-i18n="cv_description">Découvrez mon parcours, mes expériences et ma formation en détail.</p>
+            <a href="ABDERRAHIM.pdf" target="_blank" class="btn btn-glow cv-btn" download data-i18n="download_cv_btn">
+                Télécharger le CV <i class="fas fa-download ms-2"></i>
+            </a>
+        </div>
+        <div class="cv-preview">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#cvImageModal" aria-label="Aperçu du CV">
+                <img src="img/cv.png" alt="Aperçu du CV" class="img-fluid rounded shadow-lg">
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="timeline">
+    <h2 data-i18n="timeline_title">Mon Parcours</h2>
+    <svg class="section-underline-svg" viewBox="0 0 100 5" preserveAspectRatio="none"><path d="M0 2.5 L100 2.5" stroke="var(--red-primary)" stroke-width="3" fill="none" /></svg>
+    <div class="timeline-container">
+        <div class="timeline-item left" data-aos="fade-right">
+            <div class="timeline-content">
+                <h3 data-i18n="timeline_diploma_title">LICENCE PROFESSIONNELLE EN SYSTÈMES INFORMATIQUES EMBARQUÉS</h3>
+                <p class="timeline-date" data-i18n="timeline_diploma_date">Année universitaire : 2024 – 2025</p>
+                <p data-i18n="timeline_diploma_school"><strong> École Supérieure de Technologie (EST) – Dakhla</strong></p>
+                <p data-i18n="timeline_diploma_desc">Formation spécialisée dans la conception, le développement et l’optimisation de systèmes embarqués. Acquisition de compétences en programmation bas niveau (C, assembleur), utilisation de microcontrôleurs (PIC), systèmes temps réel, Linux embarqué, IoT, et développement de solutions intelligentes à base de capteurs, interfaces et protocoles de communication. Approche projet centrée sur l’innovation et l’efficacité énergétique.</p>
+            </div>
+        </div>
+        <div class="timeline-item right" data-aos="fade-left">
+            <div class="timeline-content">
+                <h3 data-i18n="timeline_bts_title">BTS EN DÉVELOPPEMENT DES SYSTÈMES D'INFORMATION</h3>
+                <p data-i18n="timeline_bts_school"><strong> Lycée Qualifiant Lala Khadija – Dakhla</strong></p>
+                <p class="timeline-date" data-i18n="timeline_bts_date">Année universitaire : 2022 – 2024</p>
+                <p data-i18n="timeline_bts_desc">Formation axée sur le développement d'applications informatiques web, mobiles et bureautiques. Maîtrise des langages de programmation (Java, PHP, JavaScript,VB.NET), des bases de données (MySQL, SQL Server), ainsi que des outils de conception (UML, Merise). Développement de projets complets, de l’analyse des besoins jusqu’au déploiement, avec une forte orientation vers les systèmes d’information d’entreprise.</p>
+            </div>
+        </div>
+        <div class="timeline-item left" data-aos="fade-right">
+            <div class="timeline-content">
+                <h3 data-i18n="timeline_bac_title"> BACCALAURÉAT SCIENTIFIQUE – SCIENCES DE LA VIE ET DE LA TERRE (SVT)</h3>
+                <p class="timeline-date" data-i18n="timeline_bac_date">Année scolaire : 2021 – 2022</p>
+                <p data-i18n="timeline_bac_school"><strong>Lycée Al-Fath – Dakhla</strong></p>
+                <p data-i18n="timeline_bac_desc">Formation scientifique générale avec un focus sur la biologie, la géologie, la physique et les mathématiques. Développement de l’esprit analytique, de la rigueur scientifique et des compétences transversales utiles pour des études supérieures dans les domaines scientifiques et technologiques.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" data-aos="fade-up">
+    <h2 data-i18n="projects_title">Mes Projets</h2>
+    <svg class="section-underline-svg" viewBox="0 0 100 5" preserveAspectRatio="none"><path d="M0 2.5 L100 2.5" stroke="var(--red-primary)" stroke-width="3" fill="none" /></svg>
+    <div class="project-filters">
+        <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Tous</button>
+        <button class="filter-btn" data-filter="web" data-i18n="filter_web">Web</button>
+        <button class="filter-btn" data-filter="embedded" data-i18n="filter_embedded">Embarqué</button>
+    </div>
+    <div class="project-grid">
+        <div class="project-item" data-project-id="projet-stage" data-category="web" data-aos="fade-up" data-aos-delay="100">
+            <img src="img/project de stage/7.png" alt="Projet de stage : Site E-commerce" loading="lazy"/>
+            <div class="project-info">
+                <h3 data-i18n="project_stage_title">Plateforme de Réclamations – Dakhla</h3>
+                <p data-i18n="project_stage_desc">Ce projet a été réalisé dans le cadre de mon stage à la Délégation du Travail de Dakhla. Il s'agit d'une application web destinée à remplacer les procédures traditionnelles sur papier...</p>
+                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+            </div>
+        </div>
+        <div class="project-item" data-project-id="projet-gestion" data-category="web" data-aos="fade-up" data-aos-delay="200">
+            <img src="img/GOT/1.png" alt="Projet de gestion : Application Web de Direction" loading="lazy"/>
+            <div class="project-info">
+                <h3 data-i18n="project_gestion_title">Interface Web – Plateforme de Streaming de Films</h3>
+                <p data-i18n="project_gestion_desc">Ce projet est une maquette front-end d’une plateforme de films, conçue pour présenter des affiches de films de manière visuellement attrayante...</p>
+                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+            </div>
+        </div>
+        <div class="project-item" data-project-id="projet-login" data-category="web" data-aos="fade-up" data-aos-delay="300">
+            <img src="img/ECO/1.png" alt="Projet d'interface de connexion" loading="lazy"/>
+            <div class="project-info">
+                <h3 data-i18n="project_login_title">Site E-commerce – Vente de Produits en Ligne</h3>
+                <p data-i18n="project_login_desc">Ce projet est une boutique en ligne que j’ai développée pour vendre mes propres produits. Il s'agit d’une plateforme e-commerce complète...</p>
+                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+            </div>
+        </div>
+        <div class="project-item" data-project-id="projet-heart" data-category="embedded" data-aos="fade-up" data-aos-delay="400">
+            <img src="img/SIE/HEART.jpg" alt="Projet Moniteur de Fréquence Cardiaque" loading="lazy"/>
+            <div class="project-info">
+                <h3 data-i18n="project_heart_title">Moniteur de Fréquence Cardiaque</h3>
+                <p data-i18n="project_heart_desc">Ce projet consiste en la création d’un dispositif de santé connecté basé sur Arduino...</p>
+                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+            </div>
+        </div>
+        <div class="project-item" data-project-id="projet-gas" data-category="embedded" data-aos="fade-up" data-aos-delay="100">
+            <img src="img/SIE/GAZ.png" alt="Projet Détecteur de Fuite de Gaz" loading="lazy"/>
+            <div class="project-info">
+                <h3 data-i18n="project_gas_title">Système de Détection de Fuite de Gaz – Arduino</h3>
+                <p data-i18n="project_gas_desc">Ce projet consiste à développer un système de sécurité domestique intelligent capable de détecter les fuites de gaz...</p>
+                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+            </div>
+        </div>
+        <div class="project-item" data-project-id="projet-irrigation" data-category="embedded" data-aos="fade-up" data-aos-delay="200">
+            <img src="img/SIE/SLEEP MODE.jpg" alt="Projet Système d'Irrigation Intelligent" loading="lazy"/>
+            <div class="project-info">
+                <h3 data-i18n="project_irrigation_title">Système d’Irrigation Solaire Intelligent</h3>
+                <p data-i18n="project_irrigation_desc">Ce projet est un système d’arrosage automatique intelligent qui utilise un capteur d’humidité...</p>
+                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="projectDetailModal" tabindex="-1" aria-labelledby="projectDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectDetailModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="project-carousel swiper-container mb-4">
+                    <div class="swiper-wrapper"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <p id="modalProjectDescription" class="mb-4"></p>
+                <div class="modal-technologies mb-4">
+                    <h6 data-i18n="modal_tech_title">Technologies Utilisées :</h6>
+                    <div id="modalProjectTechnologies" class="d-flex flex-wrap gap-2"></div>
+                </div>
+                <div class="modal-links d-flex justify-content-center gap-3">
+                    <a id="modalProjectLive" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary-outline" data-i18n="modal_demo_btn"><i class="fas fa-external-link-alt me-2"></i>Voir la démo</a>
+                    <a id="modalProjectGithub" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary-outline" data-i18n="modal_github_btn"><i class="fab fa-github me-2"></i>Code Source</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cvImageModal" tabindex="-1" aria-labelledby="cvImageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cvImageModalLabel" data-i18n="cv_preview_title">Aperçu du CV</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="img/cv.png" alt="Grand Aperçu du CV" class="img-fluid" style="max-height: 90vh; width: auto;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="skillsModalLabel" data-i18n="detailed_skills_modal_title">Compétences Techniques Avancées</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="skills-categories-container">
+                    <div class="skill-category" data-aos="fade-up">
+                        <h3 data-i18n="skill_cat_web_title"><i class="fas fa-code"></i> Développement Web et Logiciel</h3>
+                        <div class="skills-tags">
+                            <span class="skill-tag">HTML</span> <span class="skill-tag">CSS</span> <span class="skill-tag">JavaScript</span> <span class="skill-tag">PHP</span> <span class="skill-tag">Java</span> <span class="skill-tag">Python</span> <span class="skill-tag">C / C++</span> <span class="skill-tag">VB.NET</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                        <h3 data-i18n="skill_cat_db_title"><i class="fas fa-database"></i> Bases de Données & Modélisation</h3>
+                        <div class="skills-tags">
+                           <span class="skill-tag">MySQL</span> <span class="skill-tag">SQL Server</span> <span class="skill-tag">SQL</span> <span class="skill-tag">UML</span> <span class="skill-tag">Big Data (Hadoop)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                        <h3 data-i18n="skill_cat_embedded_title"><i class="fas fa-microchip"></i> Systèmes Embarqués & IoT</h3>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Arduino</span> <span class="skill-tag">Microcontrôleurs PIC</span> <span class="skill-tag">VHDL (FPGA)</span> <span class="skill-tag">Proteus (Simulation)</span> <span class="skill-tag">Développement IoT</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                        <h3 data-i18n="skill_cat_network_title"><i class="fas fa-network-wired"></i> Systèmes, Réseaux & IA</h3>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Linux (Shell)</span> <span class="skill-tag">Réseaux Informatiques</span> <span class="skill-tag">Intelligence Artificielle</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                        <h3 data-i18n="skill_cat_tools_title"><i class="fas fa-tools"></i> Outils & Design</h3>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Excel (Avancé)</span> <span class="skill-tag">Photoshop</span> <span class="skill-tag">Adobe Premiere Pro</span> <span class="skill-tag">Git / GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn modal-btn" data-bs-dismiss="modal" data-i18n="modal_close_btn">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="contact">
+    <h2 data-i18n="contact_title">Me Contacter</h2>
+    <svg class="section-underline-svg" viewBox="0 0 100 5" preserveAspectRatio="none"><path d="M0 2.5 L100 2.5" stroke="var(--red-primary)" stroke-width="3" fill="none" /></svg>
+    <p class="contact-intro" data-i18n="contact_intro">Je suis toujours ouvert aux nouvelles opportunités, aux collaborations stimulantes et aux discussions passionnantes. N'hésitez pas à me contacter si vous avez un projet en tête, une question ou si vous souhaitez en savoir plus sur mon travail.</p>
+
+    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="contact-form" data-aos="fade-up">
+        <input type="hidden" name="access_key" value="73d88bfd-92c3-4f20-a314-7263cff0caa5"> <div class="mb-3" data-aos="fade-up" data-aos-delay="100">
+            <input type="text" class="form-control" id="name" name="name" data-i18n-placeholder="contact_name_placeholder" placeholder="Votre Nom Complet" required>
+        </div>
+        <div class="mb-3" data-aos="fade-up" data-aos-delay="200">
+            <input type="email" class="form-control" id="email" name="email" data-i18n-placeholder="contact_email_placeholder" placeholder="Votre Adresse E-mail" required>
+        </div>
+        <div class="mb-3" data-aos="fade-up" data-aos-delay="300">
+            <textarea class="form-control" id="message" name="message" rows="5" data-i18n-placeholder="contact_message_placeholder" placeholder="Votre Message..." required></textarea>
+        </div>
+        <div id="form-result" class="mb-3"></div>
+        <button type="submit" class="btn btn-send-message" data-aos="fade-up" data-aos-delay="400" data-i18n="send_message_btn">
+            Envoyer le Message <i class="fas fa-paper-plane ms-2"></i>
+        </button>
+    </form>
+
+    <div class="social-links mt-5" data-aos="fade-up" data-aos-delay="500">
+        <p data-i18n="social_intro">Retrouvez-moi également sur :</p>
+        <a href="https://www.linkedin.com/in/abderrahim-es-sousy/" target="_blank" rel="noopener noreferrer" aria-label="Mon profil LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
+        <a href="https://github.com/Abderrahim-ESS" target="_blank" rel="noopener noreferrer" aria-label="Mon profil GitHub"><i class="fab fa-github fa-2x"></i></a>
+        <a href="https://www.instagram.com/abdowny/" target="_blank" rel="noopener noreferrer" aria-label="Mon profil Instagram"><i class="fab fa-instagram fa-2x"></i></a>
+    </div>
+</section>
+
+<footer>
+    <span data-i18n="footer_text">&copy; 2025 Abderrahim Es-Sousy — Tous droits réservés.</span>
+</footer>
+
+<button id="backToTopBtn" class="btn btn-glow" aria-label="Retour en haut de page">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
