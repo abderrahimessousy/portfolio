@@ -1,16 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    'use strict'; // Enable strict mode for cleaner, safer code
+    'use strict';
 
-    // --- GSAP REGISTRATION ---
     gsap.registerPlugin(ScrollTrigger);
 
-    // --- GLOBAL VARIABLES ---
     const root = document.documentElement;
     const body = document.body;
     let typedInstance = null;
-    let mySwiper = null; // Swiper instance for project modals
+    let mySwiper = null;
 
-    // --- DATA OBJECTS ---
     const translations = {
         'fr': {
             'page_title': 'Portfolio Abderrahim - Développeur Web Pro',
@@ -25,40 +22,75 @@ document.addEventListener('DOMContentLoaded', function() {
             'detailed_skills_btn': 'Compétences Techniques Détaillées',
             'cv_title': 'Mon CV Détaillé', 'cv_description': 'Découvrez mon parcours, mes expériences et ma formation en détail.', 'download_cv_btn': 'Télécharger le CV',
             'timeline_title': 'Mon Parcours',
+            'timeline_master_title': 'MASTER EN INTELLIGENCE ARTIFICIELLE (IA)',
+            'timeline_master_date': 'En cours – 2025 / 2026',
+            'timeline_master_school': 'Faculté des Sciences Semlalia (FSSM) – Marrakech',
+            'timeline_master_desc': 'Formation approfondie en Intelligence Artificielle couvrant le Machine Learning, le Deep Learning, le Traitement du Langage Naturel (NLP), la Vision par Ordinateur, l\'Analyse de Données et les Systèmes Intelligents. Développement de projets appliqués utilisant Python, TensorFlow, PyTorch.',
             'timeline_diploma_title': 'LICENCE PROFESSIONNELLE EN SYSTÈMES INFORMATIQUES EMBARQUÉS',
             'timeline_diploma_date': 'Année universitaire : 2024 – 2025',
             'timeline_diploma_school': 'École Supérieure de Technologie (EST) – Dakhla',
-            'timeline_diploma_desc': 'Formation spécialisée dans la conception, le développement et l’optimisation de systèmes embarqués...',
+            'timeline_diploma_desc': 'Formation spécialisée dans la conception, le développement et l\'optimisation de systèmes embarqués. Acquisition de compétences en programmation bas niveau, microcontrôleurs, systèmes temps réel, Linux embarqué, IoT.',
             'timeline_bts_title': "BTS EN DÉVELOPPEMENT DES SYSTÈMES D'INFORMATION",
             'timeline_bts_date': 'Année universitaire : 2022 – 2024',
             'timeline_bts_school': 'Lycée Qualifiant Lala Khadija – Dakhla',
-            'timeline_bts_desc': "Formation axée sur le développement d'applications informatiques web, mobiles et bureautiques...",
+            'timeline_bts_desc': "Formation axée sur le développement d'applications informatiques web, mobiles et bureautiques. Maîtrise des langages de programmation, bases de données, outils de conception.",
             'timeline_bac_title': 'BACCALAURÉAT SCIENTIFIQUE – SCIENCES DE LA VIE ET DE LA TERRE (SVT)',
             'timeline_bac_date': 'Année scolaire : 2021 – 2022',
             'timeline_bac_school': 'Lycée Al-Fath – Dakhla',
-            'timeline_bac_desc': 'Formation scientifique générale avec un focus sur la biologie, la géologie, la physique et les mathématiques...',
+            'timeline_bac_desc': 'Formation scientifique générale avec un focus sur la biologie, la géologie, la physique et les mathématiques. Développement de l\'esprit analytique et de la rigueur scientifique.',
             'projects_title': 'Mes Projets',
-            'filter_all': 'Tous', 'filter_web': 'Web', 'filter_embedded': 'Embarqué',
+            'filter_all': 'Tous', 'filter_web': 'Web', 'filter_embedded': 'Embarqué', 'filter_IA': 'IA',
             'project_stage_title': 'Plateforme de Réclamations – Dakhla',
-            'project_stage_desc': "Ce projet a été réalisé dans le cadre de mon stage à la Délégation du Travail de Dakhla...",
+            'project_stage_desc': "Ce projet a été réalisé dans le cadre de mon stage à la Délégation du Travail de Dakhla. Il s'agit d'une application web destinée à remplacer les procédures traditionnelles sur papier, permettant aux employés de soumettre des réclamations en ligne et de suivre leur état.",
             'project_gestion_title': 'Interface Web – Plateforme de Streaming de Films',
-            'project_gestion_desc': "Ce projet est une maquette front-end d’une plateforme de films...",
+            'project_gestion_desc': "Ce projet est une maquette front-end d'une plateforme de films, conçue pour présenter des affiches de films de manière visuellement attrayante avec des animations et un design responsive.",
             'project_login_title': 'Site E-commerce – Vente de Produits en Ligne',
-            'project_login_desc': 'Ce projet est une boutique en ligne que j’ai développée pour vendre mes propres produits...',
+            'project_login_desc': 'Ce projet est une boutique en ligne que j\'ai développée pour vendre mes propres produits. Il s\'agit d\'une plateforme e-commerce complète avec gestion de panier, paiement et administration.',
             'project_heart_title': 'Moniteur de Fréquence Cardiaque',
-            'project_heart_desc': "Ce projet consiste en la création d’un dispositif de santé connecté basé sur Arduino...",
+            'project_heart_desc': "Ce projet consiste en la création d'un dispositif de santé connecté basé sur Arduino qui mesure la fréquence cardiaque et affiche les données sur un écran LCD.",
             'project_gas_title': 'Système de Détection de Fuite de Gaz – Arduino',
-            'project_gas_desc': "Ce projet consiste à développer un système de sécurité domestique intelligent capable de détecter les fuites de gaz...",
-            'project_irrigation_title': 'Système d’Irrigation Solaire Intelligent',
-            'project_irrigation_desc': "Ce projet est un système d’arrosage automatique intelligent qui utilise un capteur d’humidité...",
+            'project_gas_desc': "Ce projet consiste à développer un système de sécurité domestique intelligent capable de détecter les fuites de gaz et d'envoyer des alertes via buzzer et notification.",
+            'project_irrigation_title': 'Système d\'Irrigation Solaire Intelligent',
+            'project_irrigation_desc': "Ce projet est un système d'arrosage automatique intelligent qui utilise un capteur d'humidité pour optimiser la consommation d'eau, alimenté par énergie solaire.",
+            'project_recommendation_title': 'Système Intelligent de Recommandation de Films & Séries',
+            'project_recommendation_desc': "Développement d'une application web intégrant un moteur d'inférence en Prolog pour générer des recommandations personnalisées de films et séries à partir des préférences utilisateur.",
+            'project_prediction_title': 'Système de Prédiction des Matchs de l\'Équipe du Maroc',
+            'project_prediction_desc': "Application web développée avec Flask intégrant un modèle de Machine Learning pour prédire les résultats des matchs de l'équipe nationale du Maroc à partir de données historiques.",
+            'project_sign_lang_title': 'Système Intelligent de Reconnaissance du Langage des Signes',
+            'project_sign_lang_desc': "Système embarqué basé sur ESP32-CAM utilisant un modèle CNN pour la reconnaissance des lettres du langage des signes, avec application web Flask permettant d'assembler les caractères en mots.",
             'view_details_btn': 'Voir Détails', 'modal_tech_title': 'Technologies Utilisées :', 'modal_demo_btn': 'Voir la démo', 'modal_github_btn': 'Code Source',
             'cv_preview_title': 'Aperçu du CV', 'detailed_skills_modal_title': 'Compétences Techniques Avancées',
-            'skill_cat_web_title': 'Développement Web et Logiciel', 'skill_cat_db_title': 'Bases de Données & Modélisation', 'skill_cat_embedded_title': 'Systèmes Embarqués & IoT', 'skill_cat_network_title': 'Systèmes, Réseaux & IA', 'skill_cat_tools_title': 'Outils & Design',
-            'modal_close_btn': 'Fermer', 'contact_title': 'Me Contacter', 'contact_intro': "Je suis toujours ouvert aux nouvelles opportunités... N'hésitez pas à me contacter...",
-            'contact_name_placeholder': 'Votre Nom Complet', 'contact_email_placeholder': 'Votre Adresse E-mail', 'contact_message_placeholder': 'Votre Message...', 'send_message_btn': 'Envoyer le Message',
-            'social_intro': 'Retrouvez-me également sur :', 'footer_text': '&copy; 2025 Abderrahim Es-Sousy — Tous droits réservés.',
-            'form_sending': 'Envoi en cours...', 'form_success': 'Message envoyé avec succès !', 'form_error': "Une erreur s'est produite.",
-            'skill_html_desc': "Structure et sémantique web.", 'skill_css_desc': "Design responsive et animations.", 'skill_js_desc': "Interactivité client et logique métier.", 'skill_php_desc': "Développement Back-end robuste.", 'skill_mysql_desc': "Gestion de bases de données.", 'skill_bootstrap_desc': "Framework pour design rapide.", 'skill_c_cpp_desc': "Programmation embarquée et systèmes.", 'skill_python_desc': "Scripting, IA, data.", 'skill_git_desc': "Contrôle de version et collaboration.", 'skill_vbnet_desc': "Applications desktop et legacy.", 'skill_sqlserver_desc': "Gestion de bases de données avancée.", 'skill_linux_desc': "Environnements de développement."
+            'skill_cat_web_title': 'Développement Web et Logiciel', 
+            'skill_cat_db_title': 'Bases de Données & Modélisation', 
+            'skill_cat_embedded_title': 'Systèmes Embarqués & IoT', 
+            'skill_cat_network_title': 'Systèmes, Réseaux & IA', 
+            'skill_cat_tools_title': 'Outils & Design',
+            'skill_cat_ai_title': 'Intelligence Artificielle & Data Science',
+            'modal_close_btn': 'Fermer', 
+            'contact_title': 'Me Contacter', 
+            'contact_intro': "Je suis toujours ouvert aux nouvelles opportunités, aux collaborations stimulantes et aux discussions passionnantes. N'hésitez pas à me contacter si vous avez un projet en tête, une question ou si vous souhaitez en savoir plus sur mon travail.",
+            'contact_name_placeholder': 'Votre Nom Complet', 
+            'contact_email_placeholder': 'Votre Adresse E-mail', 
+            'contact_message_placeholder': 'Votre Message...', 
+            'send_message_btn': 'Envoyer le Message',
+            'social_intro': 'Retrouvez-moi également sur :', 
+            'footer_text': '&copy; 2025 Abderrahim Es-Sousy — Tous droits réservés.',
+            'form_sending': 'Envoi en cours...', 
+            'form_success': 'Message envoyé avec succès !', 
+            'form_error': "Une erreur s'est produite. Veuillez réessayer.",
+            'form_required': 'Tous les champs sont requis.',
+            'skill_html_desc': "Structure et sémantique web.", 
+            'skill_css_desc': "Design responsive et animations.", 
+            'skill_js_desc': "Interactivité client et logique métier.", 
+            'skill_php_desc': "Développement Back-end robuste.", 
+            'skill_mysql_desc': "Gestion de bases de données.", 
+            'skill_bootstrap_desc': "Framework pour design rapide.", 
+            'skill_c_cpp_desc': "Programmation embarquée et systèmes.", 
+            'skill_python_desc': "Scripting, IA, data.", 
+            'skill_git_desc': "Contrôle de version et collaboration.", 
+            'skill_vbnet_desc': "Applications desktop et legacy.", 
+            'skill_sqlserver_desc': "Gestion de bases de données avancée.", 
+            'skill_linux_desc': "Environnements de développement."
         },
         'en': {
             'page_title': 'Abderrahim Portfolio - Pro Web Developer',
@@ -73,40 +105,75 @@ document.addEventListener('DOMContentLoaded', function() {
             'detailed_skills_btn': 'Detailed Technical Skills',
             'cv_title': 'My Detailed CV', 'cv_description': 'Discover my career path, experiences, and education in detail.', 'download_cv_btn': 'Download CV',
             'timeline_title': 'My Journey',
+            'timeline_master_title': 'MASTER IN ARTIFICIAL INTELLIGENCE (AI)',
+            'timeline_master_date': 'In progress – 2025 / 2026',
+            'timeline_master_school': 'Faculty of Sciences Semlalia (FSSM) – Marrakech',
+            'timeline_master_desc': 'Advanced training in Artificial Intelligence covering Machine Learning, Deep Learning, Natural Language Processing (NLP), Computer Vision, Data Analysis and Intelligent Systems. Development of applied projects using Python, TensorFlow, PyTorch.',
             'timeline_diploma_title': 'PROFESSIONAL LICENSE IN EMBEDDED COMPUTER SYSTEMS',
             'timeline_diploma_date': 'Academic Year: 2024 – 2025',
             'timeline_diploma_school': 'Higher School of Technology (EST) – Dakhla',
-            'timeline_diploma_desc': 'Specialized training in the design, development, and optimization of embedded systems...',
+            'timeline_diploma_desc': 'Specialized training in the design, development, and optimization of embedded systems. Acquisition of skills in low-level programming, microcontrollers, real-time systems, embedded Linux, IoT.',
             'timeline_bts_title': 'BTS IN INFORMATION SYSTEMS DEVELOPMENT',
             'timeline_bts_date': 'Academic Year: 2022 – 2024',
             'timeline_bts_school': 'Lycée Qualifiant Lala Khadija – Dakhla',
-            'timeline_bts_desc': 'Training focused on the development of web, mobile, and desktop computer applications...',
+            'timeline_bts_desc': 'Training focused on the development of web, mobile, and desktop computer applications. Mastery of programming languages, databases, design tools.',
             'timeline_bac_title': 'SCIENTIFIC BACCALAUREATE – LIFE AND EARTH SCIENCES (SVT)',
             'timeline_bac_date': 'Academic Year: 2021 – 2022',
             'timeline_bac_school': 'Lycée Al-Fath – Dakhla',
-            'timeline_bac_desc': 'General scientific training with a focus on biology, geology, physics, and mathematics...',
+            'timeline_bac_desc': 'General scientific training with a focus on biology, geology, physics, and mathematics. Development of analytical thinking and scientific rigor.',
             'projects_title': 'My Projects',
-            'filter_all': 'All', 'filter_web': 'Web', 'filter_embedded': 'Embedded',
+            'filter_all': 'All', 'filter_web': 'Web', 'filter_embedded': 'Embedded', 'filter_IA': 'AI',
             'project_stage_title': 'Complaint Platform – Dakhla',
-            'project_stage_desc': 'This project was carried out during my internship at the Dakhla Labor Delegation...',
+            'project_stage_desc': 'This project was carried out during my internship at the Dakhla Labor Delegation. It is a web application designed to replace traditional paper procedures, allowing employees to submit complaints online and track their status.',
             'project_gestion_title': 'Web Interface – Film Streaming Platform',
-            'project_gestion_desc': 'This project is a front-end mockup of a movie platform...',
+            'project_gestion_desc': 'This project is a front-end mockup of a movie platform, designed to present movie posters in a visually appealing way with animations and responsive design.',
             'project_login_title': 'E-commerce Site – Online Product Sales',
-            'project_login_desc': 'This project is an online store I developed to sell my own products...',
+            'project_login_desc': 'This project is an online store I developed to sell my own products. It is a complete e-commerce platform with cart management, payment, and administration.',
             'project_heart_title': 'Heart Rate Monitor',
-            'project_heart_desc': 'This project involves creating an Arduino-based connected health device...',
+            'project_heart_desc': 'This project involves creating an Arduino-based connected health device that measures heart rate and displays data on an LCD screen.',
             'project_gas_title': 'Gas Leak Detection System – Arduino',
-            'project_gas_desc': 'This project involves developing a smart home security system capable of detecting gas leaks...',
+            'project_gas_desc': 'This project involves developing a smart home security system capable of detecting gas leaks and sending alerts via buzzer and notification.',
             'project_irrigation_title': 'Smart Solar Irrigation System',
-            'project_irrigation_desc': 'This project is a smart automatic watering system that uses a moisture sensor...',
+            'project_irrigation_desc': 'This project is a smart automatic watering system that uses a moisture sensor to optimize water consumption, powered by solar energy.',
+            'project_recommendation_title': 'Intelligent Movie & Series Recommendation System',
+            'project_recommendation_desc': 'Development of a web application integrating a Prolog inference engine to generate personalized movie and series recommendations based on user preferences.',
+            'project_prediction_title': 'Morocco National Team Match Prediction System',
+            'project_prediction_desc': 'Web application developed with Flask integrating a Machine Learning model to predict the results of Morocco national team matches from historical data.',
+            'project_sign_lang_title': 'Intelligent Sign Language Recognition System',
+            'project_sign_lang_desc': 'ESP32-CAM based embedded system using a CNN model for sign language letter recognition, with a Flask web application allowing characters to be assembled into words.',
             'view_details_btn': 'View Details', 'modal_tech_title': 'Technologies Used:', 'modal_demo_btn': 'View Demo', 'modal_github_btn': 'Source Code',
             'cv_preview_title': 'CV Preview', 'detailed_skills_modal_title': 'Advanced Technical Skills',
-            'skill_cat_web_title': 'Web and Software Development', 'skill_cat_db_title': 'Databases & Modeling', 'skill_cat_embedded_title': 'Embedded Systems & IoT', 'skill_cat_network_title': 'Systems, Networks & AI', 'skill_cat_tools_title': 'Tools & Design',
-            'modal_close_btn': 'Close', 'contact_title': 'Contact Me', 'contact_intro': 'I am always open to new opportunities... Feel free to contact me...',
-            'contact_name_placeholder': 'Your Full Name', 'contact_email_placeholder': 'Your Email Address', 'contact_message_placeholder': 'Your Message...', 'send_message_btn': 'Send Message',
-            'social_intro': 'Also find me on:', 'footer_text': '&copy; 2025 Abderrahim Es-Sousy — All rights reserved.',
-            'form_sending': 'Sending...', 'form_success': 'Message sent successfully!', 'form_error': 'An error occurred.',
-            'skill_html_desc': 'Web structure and semantics.', 'skill_css_desc': 'Responsive design and animations.', 'skill_js_desc': 'Client interactivity and business logic.', 'skill_php_desc': 'Robust Back-end development.', 'skill_mysql_desc': 'Database management.', 'skill_bootstrap_desc': 'Framework for rapid design.', 'skill_c_cpp_desc': 'Embedded and systems programming.', 'skill_python_desc': 'Scripting, AI, data.', 'skill_git_desc': 'Version control and collaboration.', 'skill_vbnet_desc': 'Desktop and legacy applications.', 'skill_sqlserver_desc': 'Advanced database management.', 'skill_linux_desc': 'Development environments.'
+            'skill_cat_web_title': 'Web and Software Development',
+            'skill_cat_db_title': 'Databases & Modeling',
+            'skill_cat_embedded_title': 'Embedded Systems & IoT',
+            'skill_cat_network_title': 'Systems, Networks & AI',
+            'skill_cat_tools_title': 'Tools & Design',
+            'skill_cat_ai_title': 'Artificial Intelligence & Data Science',
+            'modal_close_btn': 'Close',
+            'contact_title': 'Contact Me',
+            'contact_intro': 'I am always open to new opportunities, stimulating collaborations, and exciting discussions. Feel free to contact me if you have a project in mind, a question, or if you want to learn more about my work.',
+            'contact_name_placeholder': 'Your Full Name',
+            'contact_email_placeholder': 'Your Email Address',
+            'contact_message_placeholder': 'Your Message...',
+            'send_message_btn': 'Send Message',
+            'social_intro': 'Also find me on:',
+            'footer_text': '&copy; 2025 Abderrahim Es-Sousy — All rights reserved.',
+            'form_sending': 'Sending...',
+            'form_success': 'Message sent successfully!',
+            'form_error': 'An error occurred. Please try again.',
+            'form_required': 'All fields are required.',
+            'skill_html_desc': 'Web structure and semantics.',
+            'skill_css_desc': 'Responsive design and animations.',
+            'skill_js_desc': 'Client interactivity and business logic.',
+            'skill_php_desc': 'Robust Back-end development.',
+            'skill_mysql_desc': 'Database management.',
+            'skill_bootstrap_desc': 'Framework for rapid design.',
+            'skill_c_cpp_desc': 'Embedded and systems programming.',
+            'skill_python_desc': 'Scripting, AI, data.',
+            'skill_git_desc': 'Version control and collaboration.',
+            'skill_vbnet_desc': 'Desktop and legacy applications.',
+            'skill_sqlserver_desc': 'Advanced database management.',
+            'skill_linux_desc': 'Development environments.'
         },
         'ar': {
             'page_title': 'بورتفوليو عبد الرحيم - مطور ويب محترف',
@@ -121,40 +188,75 @@ document.addEventListener('DOMContentLoaded', function() {
             'detailed_skills_btn': 'المهارات التقنية المفصلة',
             'cv_title': 'سيرتي الذاتية', 'cv_description': 'اكتشف مساري، خبراتي، وتكويني بالتفصيل.', 'download_cv_btn': 'تحميل السيرة الذاتية',
             'timeline_title': 'مساري الدراسي والمهني',
+            'timeline_master_title': 'ماستر في الذكاء الاصطناعي',
+            'timeline_master_date': 'قيد الإنجاز – 2025 / 2026',
+            'timeline_master_school': 'كلية العلوم السملالية – مراكش',
+            'timeline_master_desc': 'تكوين متقدم في الذكاء الاصطناعي يغطي تعلم الآلة، التعلم العميق، معالجة اللغات الطبيعية، رؤية الكمبيوتر، تحليل البيانات والأنظمة الذكية. تطوير مشاريع تطبيقية باستخدام Python, TensorFlow, PyTorch.',
             'timeline_diploma_title': 'الإجازة المهنية في الأنظمة المعلوماتية المدمجة',
             'timeline_diploma_date': 'السنة الجامعية: 2024 – 2025',
-            'timeline_diploma_school': 'المدرسة العليا للتكنولوجيا (EST) – الداخلة',
-            'timeline_diploma_desc': 'تكوين متخصص في تصميم وتطوير وتحسين الأنظمة المدمجة...',
+            'timeline_diploma_school': 'المدرسة العليا للتكنولوجيا – الداخلة',
+            'timeline_diploma_desc': 'تكوين متخصص في تصميم وتطوير وتحسين الأنظمة المدمجة. اكتساب مهارات في البرمجة منخفضة المستوى، المتحكمات الدقيقة، الأنظمة الزمنية الحقيقية، لينكس المدمج، إنترنت الأشياء.',
             'timeline_bts_title': 'شهادة التقني العالي في تطوير نظم المعلومات',
             'timeline_bts_date': 'السنة الجامعية: 2022 – 2024',
             'timeline_bts_school': 'ثانوية لالة خديجة التأهيلية – الداخلة',
-            'timeline_bts_desc': 'تكوين يركز على تطوير تطبيقات الحاسوب للويب، الهاتف المحمول والمكاتب...',
+            'timeline_bts_desc': 'تكوين يركز على تطوير تطبيقات الحاسوب للويب، الهاتف المحمول والمكاتب. إتقان لغات البرمجة، قواعد البيانات، أدوات التصميم.',
             'timeline_bac_title': 'البكالوريا العلمية – علوم الحياة والأرض',
             'timeline_bac_date': 'السنة الدراسية: 2021 – 2022',
             'timeline_bac_school': 'ثانوية الفتح – الداخلة',
-            'timeline_bac_desc': 'تكوين علمي عام مع التركيز على البيولوجيا، الجيولوجيا، والفيزياء...',
+            'timeline_bac_desc': 'تكوين علمي عام مع التركيز على البيولوجيا، الجيولوجيا، الفيزياء والرياضيات. تطوير التفكير التحليلي والدقة العلمية.',
             'projects_title': 'مشاريعي',
-            'filter_all': 'الكل', 'filter_web': 'الويب', 'filter_embedded': 'الأنظمة المدمجة',
+            'filter_all': 'الكل', 'filter_web': 'الويب', 'filter_embedded': 'الأنظمة المدمجة', 'filter_IA': 'الذكاء الاصطناعي',
             'project_stage_title': 'منصة الشكايات – الداخلة',
-            'project_stage_desc': 'تم إنجاز هذا المشروع في إطار تدريبي بمندوبية الشغل بالداخلة...',
+            'project_stage_desc': 'تم إنجاز هذا المشروع في إطار تدريبي بمندوبية الشغل بالداخلة. وهو تطبيق ويب يهدف إلى استبدال الإجراءات التقليدية الورقية، مما يسمح للموظفين بتقديم الشكايات عبر الإنترنت ومتابعة حالتها.',
             'project_gestion_title': 'واجهة ويب – منصة بث أفلام',
-            'project_gestion_desc': 'هذا المشروع هو نموذج واجهة أمامية لمنصة أفلام...',
-            'project_login_title': 'متجر إلكتروني – لبيع المنتجات',
-            'project_login_desc': 'هذا المشروع عبارة عن متجر إلكتروني قمت بتطويره لبيع منتجاتي الخاصة...',
+            'project_gestion_desc': 'هذا المشروع هو نموذج واجهة أمامية لمنصة أفلام، مصمم لعرض ملصقات الأفلام بطريقة جذابة بصرياً مع رسوم متحركة وتصميم متجاوب.',
+            'project_login_title': 'متجر إلكتروني – لبيع المنتجات عبر الإنترنت',
+            'project_login_desc': 'هذا المشروع عبارة عن متجر إلكتروني قمت بتطويره لبيع منتجاتي الخاصة. إنها منصة تجارة إلكترونية كاملة مع إدارة سلة التسوق والدفع والإدارة.',
             'project_heart_title': 'جهاز مراقبة معدل نبضات القلب',
-            'project_heart_desc': 'يتكون هذا المشروع من إنشاء جهاز صحي متصل يعتمد على الأردوينو...',
+            'project_heart_desc': 'يتكون هذا المشروع من إنشاء جهاز صحي متصل يعتمد على الأردوينو لقياس معدل نبضات القلب وعرض البيانات على شاشة LCD.',
             'project_gas_title': 'نظام كشف تسرب الغاز - أردوينو',
-            'project_gas_desc': 'يهدف هذا المشروع إلى تطوير نظام أمان منزلي ذكي قادر على كشف تسربات الغاز...',
+            'project_gas_desc': 'يهدف هذا المشروع إلى تطوير نظام أمان منزلي ذكي قادر على كشف تسربات الغاز وإرسال تنبيهات عبر جرس إنذار وإشعار.',
             'project_irrigation_title': 'نظام ري شمسي ذكي',
-            'project_irrigation_desc': 'هذا المشروع هو نظام سقي أوتوماتيكي ذكي يستخدم مستشعر الرطوبة...',
+            'project_irrigation_desc': 'هذا المشروع هو نظام سقي أوتوماتيكي ذكي يستخدم مستشعر الرطوبة لتحسين استهلاك المياه، ويعمل بالطاقة الشمسية.',
+            'project_recommendation_title': 'نظام ذكي لتوصية الأفلام والمسلسلات',
+            'project_recommendation_desc': 'تطوير تطبيق ويب يدمج محرك استدلال بلغة برولوج لتوليد توصيات مخصصة للأفلام والمسلسلات بناءً على تفضيلات المستخدم.',
+            'project_prediction_title': 'نظام توقع نتائج مباريات المنتخب المغربي',
+            'project_prediction_desc': 'تطبيق ويب مطور بإطار Flask يدمج نموذج تعلم آلة للتنبؤ بنتائج مباريات المنتخب المغربي من البيانات التاريخية.',
+            'project_sign_lang_title': 'نظام ذكي للتعرف على لغة الإشارة',
+            'project_sign_lang_desc': 'نظام مضمن قائم على ESP32-CAM يستخدم نموذج CNN للتعرف على حروف لغة الإشارة، مع تطبيق ويب Flask لتجميع الحروف في كلمات.',
             'view_details_btn': 'عرض التفاصيل', 'modal_tech_title': 'التقنيات المستخدمة:', 'modal_demo_btn': 'مشاهدة العرض', 'modal_github_btn': 'الكود المصدري',
             'cv_preview_title': 'معاينة السيرة الذاتية', 'detailed_skills_modal_title': 'المهارات التقنية المتقدمة',
-            'skill_cat_web_title': 'تطوير الويب والبرمجيات', 'skill_cat_db_title': 'قواعد البيانات والنمذجة', 'skill_cat_embedded_title': 'الأنظمة المدمجة وإنترنت الأشياء', 'skill_cat_network_title': 'الأنظمة، الشبكات والذكاء الاصطناعي', 'skill_cat_tools_title': 'الأدوات والتصميم',
-            'modal_close_btn': 'إغلاق', 'contact_title': 'اتصل بي', 'contact_intro': 'أنا دائماً منفتح على الفرص الجديدة... لا تتردد في الاتصال بي...',
-            'contact_name_placeholder': 'اسمك الكامل', 'contact_email_placeholder': 'بريدك الإلكتروني', 'contact_message_placeholder': 'رسالتك...', 'send_message_btn': 'إرسال الرسالة',
-            'social_intro': 'تجدني أيضًا على:', 'footer_text': '&copy; 2025 عبد الرحيم السوسي — جميع الحقوق محفوظة.',
-            'form_sending': 'جاري الإرسال...', 'form_success': 'تم إرسال الرسالة بنجاح!', 'form_error': 'حدث خطأ أثناء الإرسال.',
-            'skill_html_desc': 'هيكل الويب ودلالاته.', 'skill_css_desc': 'تصميم متجاوب ورسوم متحركة.', 'skill_js_desc': 'تفاعل العميل ومنطق الأعمال.', 'skill_php_desc': 'تطوير خلفي قوي.', 'skill_mysql_desc': 'إدارة قواعد البيانات.', 'skill_bootstrap_desc': 'إطار عمل للتصميم السريع.', 'skill_c_cpp_desc': 'البرمجة المدمجة والأنظمة.', 'skill_python_desc': 'البرمجة النصية، الذكاء الاصطناعي، البيانات.', 'skill_git_desc': 'التحكم في الإصدار والتعاون.', 'skill_vbnet_desc': 'تطبيقات سطح المكتب.', 'skill_sqlserver_desc': 'إدارة قواعد البيانات المتقدمة.', 'skill_linux_desc': 'بيئات التطوير.'
+            'skill_cat_web_title': 'تطوير الويب والبرمجيات',
+            'skill_cat_db_title': 'قواعد البيانات والنمذجة',
+            'skill_cat_embedded_title': 'الأنظمة المدمجة وإنترنت الأشياء',
+            'skill_cat_network_title': 'الأنظمة، الشبكات والذكاء الاصطناعي',
+            'skill_cat_tools_title': 'الأدوات والتصميم',
+            'skill_cat_ai_title': 'الذكاء الاصطناعي وعلوم البيانات',
+            'modal_close_btn': 'إغلاق',
+            'contact_title': 'اتصل بي',
+            'contact_intro': 'أنا دائماً منفتح على الفرص الجديدة، والتعاون المحفز، والنقاشات المثيرة. لا تتردد في الاتصال بي إذا كان لديك مشروع في ذهنك، أو سؤال، أو إذا كنت ترغب في معرفة المزيد عن عملي.',
+            'contact_name_placeholder': 'اسمك الكامل',
+            'contact_email_placeholder': 'بريدك الإلكتروني',
+            'contact_message_placeholder': 'رسالتك...',
+            'send_message_btn': 'إرسال الرسالة',
+            'social_intro': 'تجدني أيضًا على:',
+            'footer_text': '&copy; 2025 عبد الرحيم السوسي — جميع الحقوق محفوظة.',
+            'form_sending': 'جاري الإرسال...',
+            'form_success': 'تم إرسال الرسالة بنجاح!',
+            'form_error': 'حدث خطأ أثناء الإرسال. حاول مرة أخرى.',
+            'form_required': 'جميع الحقول مطلوبة.',
+            'skill_html_desc': 'هيكل الويب ودلالاته.',
+            'skill_css_desc': 'تصميم متجاوب ورسوم متحركة.',
+            'skill_js_desc': 'تفاعل العميل ومنطق الأعمال.',
+            'skill_php_desc': 'تطوير خلفي قوي.',
+            'skill_mysql_desc': 'إدارة قواعد البيانات.',
+            'skill_bootstrap_desc': 'إطار عمل للتصميم السريع.',
+            'skill_c_cpp_desc': 'البرمجة المدمجة والأنظمة.',
+            'skill_python_desc': 'البرمجة النصية، الذكاء الاصطناعي، البيانات.',
+            'skill_git_desc': 'التحكم في الإصدار والتعاون.',
+            'skill_vbnet_desc': 'تطبيقات سطح المكتب.',
+            'skill_sqlserver_desc': 'إدارة قواعد البيانات المتقدمة.',
+            'skill_linux_desc': 'بيئات التطوير.'
         }
     };
 
@@ -200,17 +302,43 @@ document.addEventListener('DOMContentLoaded', function() {
             description_key: "project_irrigation_desc",
             technologies: ["c_cpp", "arduino"],
             live_demo: "#", github_repo: "#"
-        }
+        },
+        "projet-recommandation": {
+            title_key: "project_recommendation_title",
+            galleryImages: ["img/prolog/1.png", "img/prolog/2.png","img/prolog/3.png","img/prolog/4.png","img/prolog/5.png","img/prolog/6.png","img/prolog/7.png"],
+            description_key: "project_recommendation_desc",
+            technologies: ["html5", "css3", "javascript", "python"],
+            live_demo: "#", github_repo: "#"
+        },
+        "projet-prediction-maroc": {
+            title_key: "project_prediction_title",
+            galleryImages: ["img/maroc/1.png", "img/maroc/2.png"],
+            description_key: "project_prediction_desc",
+            technologies: ["html5", "css3", "javascript", "python"],
+            live_demo: "#", github_repo: "#"
+        },
+        "projet-sign-language": {
+            title_key: "project_sign_lang_title",
+            galleryImages: ["img/sign/1.jpg"],
+            description_key: "project_sign_lang_desc",
+            technologies: ["html5", "css3", "javascript", "python", "c_cpp", "arduino"],
+            live_demo: "#", github_repo: "#"
+        },
     };
 
     const technologyIcons = {
-        "html5": '<i class="fab fa-html5 tech-icon" title="HTML5"></i>', "css3": '<i class="fab fa-css3-alt tech-icon" title="CSS3"></i>', "javascript": '<i class="fab fa-js tech-icon" title="JavaScript"></i>', "php": '<i class="fab fa-php tech-icon" title="PHP"></i>',
+        "html5": '<i class="fab fa-html5 tech-icon" title="HTML5"></i>',
+        "css3": '<i class="fab fa-css3-alt tech-icon" title="CSS3"></i>',
+        "javascript": '<i class="fab fa-js tech-icon" title="JavaScript"></i>',
+        "php": '<i class="fab fa-php tech-icon" title="PHP"></i>',
         "mysql": '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" class="tech-icon svg-icon" alt="MySQL" title="MySQL">',
         "bootstrap": '<i class="fab fa-bootstrap tech-icon" title="Bootstrap"></i>',
         "c_cpp": '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" class="tech-icon svg-icon" alt="C/C++" title="C/C++">',
         "vbnet": '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-plain-wordmark.svg" class="tech-icon svg-icon" alt="VB.NET" title="VB.NET">',
         "sqlserver": '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain-wordmark.svg" class="tech-icon svg-icon" alt="SQL Server" title="SQL Server">',
-        "python": '<i class="fab fa-python tech-icon" title="Python"></i>', "linux": '<i class="fab fa-linux tech-icon" title="Linux"></i>', "git_github": '<i class="fab fa-github tech-icon" title="Git / GitHub"></i>',
+        "python": '<i class="fab fa-python tech-icon" title="Python"></i>',
+        "linux": '<i class="fab fa-linux tech-icon" title="Linux"></i>',
+        "git_github": '<i class="fab fa-github tech-icon" title="Git / GitHub"></i>',
         "arduino": '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original-wordmark.svg" class="tech-icon svg-icon" alt="Arduino" title="Arduino">'
     };
 
@@ -229,19 +357,16 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: "Linux", iconKey: "linux", description_key: "skill_linux_desc" }
     ];
 
-    // --- TRANSLATION FUNCTION ---
     function applyTranslations(lang) {
         if (!translations[lang]) {
             console.warn(`Translation for language '${lang}' not found.`);
             return;
         }
 
-        // Update HTML lang and dir
         root.lang = lang;
         root.dir = lang === 'ar' ? 'rtl' : 'ltr';
         body.classList.toggle('rtl', lang === 'ar');
 
-        // Update all elements with data-i18n attribute
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             const translation = translations[lang][key];
@@ -254,7 +379,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Update placeholders
         document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
             const key = element.getAttribute('data-i18n-placeholder');
             if (translations[lang][key]) {
@@ -262,7 +386,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Re-initialize Typed.js with new strings (CURSOR REMOVED HERE)
         if (typedInstance) typedInstance.destroy();
         const typedStrings = {
             fr: ["Développeur Web Full Stack", "Spécialiste Systèmes Embarqués", "Passionné d'Intelligence Artificielle"],
@@ -276,18 +399,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 typeSpeed: 60,
                 backSpeed: 30,
                 loop: true,
-                showCursor: false, // MODIFIÉ : Désactive le curseur
-                // cursorChar: '|' // Cette ligne est maintenant inutile, peut être commentée ou supprimée
+                showCursor: false,
+                cursorChar: '|'
             });
         }
 
-        // Update skill card descriptions
         document.querySelectorAll('.skill-card').forEach(card => {
             const skillNameElement = card.querySelector('h4');
             const skillDescElement = card.querySelector('p');
             if (skillNameElement && skillDescElement) {
-                const skillName = skillNameElement.textContent; // Get the skill name as displayed
-                // Find the skill data using the name to get the description key
+                const skillName = skillNameElement.textContent;
                 const skillData = technicalSkills.find(s => s.name === skillName); 
                 if (skillData && translations[lang][skillData.description_key]) {
                     skillDescElement.textContent = translations[lang][skillData.description_key];
@@ -295,27 +416,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Update active language button
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
 
-        // Save language preference
         localStorage.setItem('selectedLanguage', lang);
     }
 
-    // --- INITIALIZATIONS & EVENT LISTENERS ---
-
-    // 1. Initialize AOS (Animate On Scroll) library first
     AOS.init({
         duration: 1000,
         once: true,
-        offset: 50 // Adjust this value if sections appear too late/early
+        offset: 50
     });
 
-    // Dynamic generation of skill cards (only if skillsGrid exists and is empty to prevent duplicates)
     const skillsGrid = document.querySelector('.skills-grid');
-    if (skillsGrid && skillsGrid.children.length === 0) { // Ensure it's empty to avoid re-adding
+    if (skillsGrid && skillsGrid.children.length === 0) {
         technicalSkills.forEach((skill, index) => {
             const skillCard = document.createElement('div');
             skillCard.className = 'skill-card';
@@ -324,12 +439,11 @@ document.addEventListener('DOMContentLoaded', function() {
             skillCard.innerHTML = `
                 <div class="skill-icon">${technologyIcons[skill.iconKey] || ''}</div>
                 <h4>${skill.name}</h4>
-                <p></p>`; // p content will be set by translation function
+                <p></p>`;
             skillsGrid.appendChild(skillCard);
         });
     }
 
-    // Scroll Progress Bar
     const scrollProgressBar = document.getElementById('scroll-progress');
     window.addEventListener('scroll', () => {
         if (scrollProgressBar) {
@@ -340,12 +454,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Side Navigation
     const sideNav = document.getElementById('sideNav');
     const hamburgerBtn = document.querySelector('.hamburger-btn');
     const closeBtn = document.querySelector('.close-btn');
 
-    // Create and append overlay once
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
     body.appendChild(overlay);
@@ -353,17 +465,27 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleSideNav(open) {
         const navWidth = "280px";
         const isRTL = root.dir === 'rtl';
-        if (sideNav) { // Ensure sideNav exists
+        if (sideNav) {
             if (open) {
                 sideNav.style.width = navWidth;
-                isRTL ? sideNav.style.right = "0" : sideNav.style.left = "0";
+                if (isRTL) {
+                    sideNav.style.right = "0";
+                    sideNav.style.left = "auto";
+                } else {
+                    sideNav.style.left = "0";
+                    sideNav.style.right = "auto";
+                }
                 overlay.classList.add('active');
-                body.style.overflow = 'hidden'; // Prevent main body scroll
+                body.style.overflow = 'hidden';
             } else {
                 sideNav.style.width = "0";
-                isRTL ? sideNav.style.right = `-${navWidth}` : sideNav.style.left = `-${navWidth}`;
+                if (isRTL) {
+                    sideNav.style.right = `-${navWidth}`;
+                } else {
+                    sideNav.style.left = `-${navWidth}`;
+                }
                 overlay.classList.remove('active');
-                body.style.overflow = ''; // Restore main body scroll
+                body.style.overflow = '';
             }
         }
     }
@@ -372,28 +494,26 @@ document.addEventListener('DOMContentLoaded', function() {
     closeBtn?.addEventListener('click', () => toggleSideNav(false));
     overlay.addEventListener('click', () => toggleSideNav(false));
 
-    // Dark Mode
     const darkModeToggle = document.getElementById('darkModeToggle');
     const darkModeIcon = document.getElementById('darkModeIcon');
     function setDarkMode(isDark) {
         body.classList.toggle('dark-mode', isDark);
         body.classList.toggle('light-mode', !isDark); 
-        if (darkModeIcon) { // Check if icon element exists
+        if (darkModeIcon) {
             darkModeIcon.className = `fas ${isDark ? 'fa-moon' : 'fa-sun'}`;
         }
-        if (darkModeToggle) { // Check if toggle exists
+        if (darkModeToggle) {
             darkModeToggle.checked = isDark;
         }
         localStorage.setItem('themeMode', isDark ? 'dark' : 'light'); 
     }
     darkModeToggle?.addEventListener('change', () => setDarkMode(darkModeToggle.checked));
     
-    // Theme Color Switcher
     const themeSwitcher = document.querySelector('.theme-switcher');
     const themeToggleBtn = document.querySelector('.theme-toggle-btn');
 
     themeToggleBtn?.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent document click from closing it immediately
+        e.stopPropagation();
         themeSwitcher?.classList.toggle('active');
     });
 
@@ -403,11 +523,9 @@ document.addEventListener('DOMContentLoaded', function() {
             root.style.setProperty('--red-primary', color);
             localStorage.setItem('themeColor', color);
             
-            // Remove 'active' from previously active option and add to current
             document.querySelector('.theme-option.active')?.classList.remove('active');
             option.classList.add('active');
             
-            // Update particles color if particles.js is initialized
             if (window.pJSDom && pJSDom[0] && pJSDom[0].pJS && pJSDom[0].pJS.particles) {
                 pJSDom[0].pJS.particles.color.value = color;
                 pJSDom[0].pJS.particles.line_linked.color = color;
@@ -415,20 +533,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    // Close theme switcher if clicking outside
+
     document.addEventListener('click', (e) => {
         if (themeSwitcher && !themeSwitcher.contains(e.target) && !themeToggleBtn?.contains(e.target)) {
             themeSwitcher.classList.remove('active');
         }
     });
 
-
-    // Language Switcher
     document.querySelectorAll('.lang-btn').forEach(button => {
         button.addEventListener('click', () => applyTranslations(button.dataset.lang));
     });
 
-    // Smooth scroll for navigation links
     document.querySelectorAll('.side-nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -437,19 +552,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 const targetElement = document.querySelector(targetId);
                 targetElement?.scrollIntoView({ behavior: 'smooth' });
             }
-            toggleSideNav(false); // Close side nav after clicking a link
+            toggleSideNav(false);
         });
     });
 
-    // Active link on scroll
     const sections = document.querySelectorAll('section, header');
     const navLinks = document.querySelectorAll('.side-nav-links .nav-link');
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
-            // Adjusted offset for active link detection to make it smoother
-            // You might need to fine-tune this '150' value
-            if (section.offsetTop <= pageYOffset + 150) { 
+            if (section.offsetTop <= window.pageYOffset + 150) { 
                 current = section.getAttribute('id');
             }
         });
@@ -458,17 +570,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Project Detail Modal Logic
     const projectDetailModalElement = document.getElementById('projectDetailModal');
-    let projectDetailModal; // Declare here, initialize conditionally
+    let projectDetailModal;
 
     if (projectDetailModalElement && typeof bootstrap !== 'undefined' && bootstrap.Modal) {
         projectDetailModal = new bootstrap.Modal(projectDetailModalElement);
-    } else {
-        console.warn("Bootstrap Modal or projectDetailModalElement not found. Project modal functionality might not work.");
     }
 
-    // Modified event listener for project items to trigger the modal
     document.querySelectorAll('.project-item').forEach(item => {
         item.addEventListener('click', function() {
             const projectId = this.getAttribute('data-project-id');
@@ -481,7 +589,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const currentLang = localStorage.getItem('selectedLanguage') || 'fr';
 
-            // Populate Modal Content (with checks)
             const modalLabel = document.getElementById('projectDetailModalLabel');
             if (modalLabel) modalLabel.textContent = translations[currentLang][project.title_key];
             
@@ -507,49 +614,51 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const swiperWrapper = document.querySelector('#projectDetailModal .swiper-wrapper');
             if (swiperWrapper) {
-                swiperWrapper.innerHTML = project.galleryImages.map(imgSrc => `<div class="swiper-slide"><img src="${imgSrc}" alt="${translations[currentLang][project.title_key]}" class="img-fluid rounded"></div>`).join('');
+                swiperWrapper.innerHTML = project.galleryImages.map(imgSrc => {
+                    const isVideo = imgSrc.endsWith('.mp4');
+                    if (isVideo) {
+                        return `<div class="swiper-slide"><video controls class="img-fluid rounded"><source src="${imgSrc}" type="video/mp4"></video></div>`;
+                    } else {
+                        return `<div class="swiper-slide"><img src="${imgSrc}" alt="${translations[currentLang][project.title_key]}" class="img-fluid rounded"></div>`;
+                    }
+                }).join('');
             }
             
-            projectDetailModal.show(); // Show the Bootstrap modal
+            projectDetailModal.show();
         });
     });
 
-    // Initialize Swiper ONLY when the modal is fully shown
     projectDetailModalElement?.addEventListener('shown.bs.modal', function () {
-        // Only destroy if mySwiper was previously initialized
         if (mySwiper) {
             mySwiper.destroy(true, true); 
         }
-        // Check for the carousel element before initializing Swiper
         const projectCarousel = document.querySelector('#projectDetailModal .project-carousel');
         if (projectCarousel) {
             mySwiper = new Swiper(projectCarousel, {
                 loop: true,
                 slidesPerView: 1,
                 spaceBetween: 10,
-                autoplay: { delay: 4000, disableOnInteraction: false }, 
+                autoplay: { delay: 4000, disableOnInteraction: false },
                 pagination: { el: '.swiper-pagination', clickable: true },
                 navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
             });
         }
     });
 
-    // Contact Form
     const form = document.getElementById('contact-form');
     const result = document.getElementById('form-result');
 
     form?.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Basic client-side validation
         const nameInput = this.querySelector('[name="name"]');
         const emailInput = this.querySelector('[name="email"]');
         const messageInput = this.querySelector('[name="message"]');
+        const currentLang = localStorage.getItem('selectedLanguage') || 'fr';
 
         if (!nameInput?.value.trim() || !emailInput?.value.trim() || !messageInput?.value.trim()) {
-            const currentLang = localStorage.getItem('selectedLanguage') || 'fr';
             if (result) {
-                result.innerHTML = `<span class="text-danger">${translations[currentLang]['form_error']} (Tous les champs sont requis.)</span>`; 
+                result.innerHTML = `<span class="text-danger">${translations[currentLang]['form_required']}</span>`;
                 result.style.display = 'block';
                 setTimeout(() => { result.style.display = 'none'; }, 5000);
             }
@@ -557,11 +666,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const formData = new FormData(form);
-        // !!! IMPORTANT: REMPLACEZ 'YOUR_WEB3FORMS_ACCESS_KEY' PAR VOTRE VRAIE CLÉ API DE WEB3FORMS !!!
-        formData.append('access_key', '73d88bfd-92c3-4f20-a314-7263cff0caa5'); 
         const json = JSON.stringify(Object.fromEntries(formData.entries()));
         
-        const currentLang = localStorage.getItem('selectedLanguage') || 'fr';
         if (result) {
             result.innerHTML = `<span class="text-info">${translations[currentLang]['form_sending']}</span>`;
             result.style.display = 'block';
@@ -574,7 +680,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: json
             });
             const res = await response.json();
-            if (result) { // Check result element again
+            if (result) {
                 if (res.success) {
                     result.innerHTML = `<span class="text-success">${translations[currentLang]['form_success']}</span>`;
                     form.reset();
@@ -584,17 +690,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } catch (error) {
             console.error('Error submitting form:', error);
-            if (result) { // Check result element again
+            if (result) {
                 result.innerHTML = `<span class="text-danger">${translations[currentLang]['form_error']}</span>`;
             }
         } finally {
-            if (result) { // Ensure result element exists before timeout
+            if (result) {
                 setTimeout(() => { result.style.display = 'none'; }, 5000);
             }
         }
     });
 
-    // Project Filtering
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectItems = document.querySelectorAll('.project-item');
     filterButtons.forEach(button => {
@@ -603,7 +708,6 @@ document.addEventListener('DOMContentLoaded', function() {
             button.classList.add('active');
             const filter = button.dataset.filter;
             projectItems.forEach(item => {
-                // Use GSAP for fading animation during filtering
                 if (filter === 'all' || item.dataset.category === filter) {
                     gsap.to(item, { duration: 0.3, opacity: 1, display: 'block', ease: 'power2.out' });
                 } else {
@@ -613,23 +717,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Back to Top Button
     const backToTopBtn = document.getElementById('backToTopBtn');
     window.addEventListener('scroll', () => {
         backToTopBtn?.classList.toggle('show', window.pageYOffset > 300);
     });
     backToTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // --- ON LOAD INITIALIZATIONS ---
-
-    // 1. Initialize Theme Color
     const savedColor = localStorage.getItem('themeColor') || '#C2002E';
     root.style.setProperty('--red-primary', savedColor);
     document.querySelectorAll('.theme-option').forEach(option => {
         option.classList.toggle('active', option.dataset.themeColor === savedColor);
     });
 
-    // 2. Initialize Dark Mode
     const savedTheme = localStorage.getItem('themeMode');
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
@@ -638,17 +737,27 @@ document.addEventListener('DOMContentLoaded', function() {
         setDarkMode(false);
     }
 
-    // 3. Initialize Particles.js
     const particlesJsDiv = document.getElementById('particles-js');
-    if (window.particlesJS && particlesJsDiv) { // Ensure particlesJS is loaded and the div exists
+    if (window.particlesJS && particlesJsDiv) {
         particlesJS('particles-js', {
-            particles: { number: { value: 80, density: { enable: true, value_area: 800 } }, color: { value: savedColor }, shape: { type: "circle" }, opacity: { value: 0.5, random: false }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: savedColor, opacity: 0.4, width: 1 }, move: { enable: true, speed: 4, direction: "none", random: false, straight: false, out_mode: "out", bounce: false } },
-            interactivity: { detect_on: "canvas", events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true }, modes: { grab: { distance: 180, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } } },
+            particles: { 
+                number: { value: 80, density: { enable: true, value_area: 800 } }, 
+                color: { value: savedColor }, 
+                shape: { type: "circle" }, 
+                opacity: { value: 0.5, random: false }, 
+                size: { value: 3, random: true }, 
+                line_linked: { enable: true, distance: 150, color: savedColor, opacity: 0.4, width: 1 }, 
+                move: { enable: true, speed: 4, direction: "none", random: false, straight: false, out_mode: "out", bounce: false } 
+            },
+            interactivity: { 
+                detect_on: "canvas", 
+                events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true }, 
+                modes: { grab: { distance: 180, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } } 
+            },
             retina_detect: true
         });
     }
     
-    // 4. Initialize Language (should be last to ensure all elements are in DOM for translation)
     const savedLanguage = localStorage.getItem('selectedLanguage') || 'fr';
     applyTranslations(savedLanguage);
 });
