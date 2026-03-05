@@ -1130,7 +1130,6 @@ body[dir="rtl"] #backToTopBtn {
         font-size: 0.75rem;
     }
     .project-grid { grid-template-columns: 1fr; }
-    .modal-content { margin: 0.8rem; }
     .modal-header, .modal-body, .modal-footer { padding: 1rem 1.2rem; }
     .modal-title { font-size: 1.4rem; }
     #skillsModal .skills-categories-container { grid-template-columns: 1fr; }
@@ -1201,5 +1200,6 @@ body[dir="rtl"] #backToTopBtn {
     opacity: 1;
     visibility: visible;
 }
+
 
 
