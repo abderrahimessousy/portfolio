@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         "projet-chatbot-medical": {
             title_key: "project_chatbot_title",
-            galleryImages: ["img/chatbot/one.png", "img/chatbot/two.png", "img/chatbot/troi.png", "img/chatbot/4.png"],
+            galleryImages: ["img/chatbot/one.png", "img/chatbot/two.png", "img/chatbot/troi.png"],
             description_key: "project_chatbot_desc",
             technologies: ["python", "javascript", "html5", "css3", "tensorflow", "nlp"],
             live_demo: "#", github_repo: "#"
