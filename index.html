@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title data-i18n="page_title">Portfolio Abderrahim - Développeur Web Pro</title>
-    <meta name="description" data-i18n="meta_description" content="Portfolio professionnel d'Abderrahim, développeur web full stack spécialisé en UI/UX, programmation embarquée et IA. Découvrez mes projets innovants et mes compétences."/>
-    <meta name="keywords" data-i18n="meta_keywords" content="Abderrahim Es-Sousy, développeur web, full stack, UI/UX, programmation embarquée, IA, portfolio, projets, compétences, Maroc, Casablanca">
+    <title data-i18n="page_title">Portfolio Abderrahim - Développeur IA & Web</title>
+    <meta name="description" data-i18n="meta_description" content="Portfolio professionnel d'Abderrahim Es-Sousy, étudiant en Master Intelligence Artificielle."/>
+    <meta name="keywords" data-i18n="meta_keywords" content="Abderrahim Es-Sousy, Intelligence Artificielle, Machine Learning, Deep Learning, NLP, développeur web, systèmes embarqués, IoT, portfolio, Maroc, Dakhla">
     <meta name="author" content="Abderrahim Es-Sousy">
+    <meta name="theme-color" content="#C2002E">
 
     <link rel="icon" href="img/favicon.png" type="image/png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@600;700;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    
-    <link href="style.css" rel="stylesheet">
 
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -70,7 +72,7 @@
 <header id="accueil">
     <div id="particles-js"></div>
     <div class="content" data-aos="fade-up" data-aos-duration="1200">
-        <img src="img/abderrahim.jpg" alt="Photo de profil d'Abderrahim" class="rounded-circle profile-img" data-aos="zoom-in" data-aos-delay="300" />
+        <img src="img/abderrahim.jpg" alt="Photo de profil d'Abderrahim" class="rounded-circle profile-img" loading="eager" data-aos="zoom-in" data-aos-delay="300" />
         <h1>ABDERRAHIM<br>ES-SOUSY</h1>
         <div class="typed-text"></div>
         <a href="#projects" class="btn btn-primary mt-4 btn-glow" data-aos="zoom-in" data-aos-delay="600" data-i18n="discover_projects_btn">Découvrez mes Projets <i class="fas fa-arrow-right ms-2"></i></a>
@@ -82,7 +84,7 @@
     <svg class="section-underline-svg" viewBox="0 0 100 5" preserveAspectRatio="none"><path d="M0 2.5 L100 2.5" stroke="var(--red-primary)" stroke-width="3" fill="none" /></svg>
     <div class="about-content">
         <p data-i18n="about_description">
-            Jeune lauréat motivé avec un diplôme Bac+3 en Systèmes Informatiques Embarqués, possédant une solide formation en développement web, réseaux, programmation embarquée et bases de données. Capable de concevoir et développer des applications et systèmes informatiques efficaces et adaptés aux besoins.
+            Étudiant en 2ᵉ année de Master en Intelligence Artificielle, avec une formation solide dans le domaine des technologies de l'information et du développement de solutions informatiques. Doté d'une approche rigoureuse et orientée vers la résolution de problèmes, je suis capable d'analyser les besoins, de concevoir des solutions adaptées et de contribuer efficacement à la réalisation de projets technologiques.
         </p>
     </div>
 </section>
@@ -91,13 +93,13 @@
     <h2 data-i18n="skills_title">Mes Compétences</h2>
     <svg class="section-underline-svg" viewBox="0 0 100 5" preserveAspectRatio="none"><path d="M0 2.5 L100 2.5" stroke="var(--red-primary)" stroke-width="3" fill="none" /></svg>
     <p class="competences-intro" data-i18n="skills_intro">
-        Mon expertise s'étend sur plusieurs domaines clés du développement web et embarqué, combinant maîtrise technique et compétences transversales essentielles pour la réussite de tout projet.
+        Mon expertise s'étend sur plusieurs domaines clés : Intelligence Artificielle, développement web, systèmes embarqués et IoT, combinant maîtrise technique et compétences transversales essentielles pour la réussite de tout projet.
     </p>
 
     <div class="competences-container">
         <div class="technical-skills">
             <div class="skills-grid">
-                <!-- Skills will be dynamically generated by JavaScript -->
+                <!-- Skills dynamically generated -->
             </div>
         </div>
     </div>
@@ -113,13 +115,13 @@
             <i class="fas fa-file-alt cv-icon"></i>
             <h3 data-i18n="cv_title">Mon CV Détaillé</h3>
             <p data-i18n="cv_description">Découvrez mon parcours, mes expériences et ma formation en détail.</p>
-            <a href="ABDERRAHIM.pdf" target="_blank" class="btn btn-glow cv-btn" download data-i18n="download_cv_btn">
+            <a href="ABDERRAHIM.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-glow cv-btn" download data-i18n="download_cv_btn">
                 Télécharger le CV <i class="fas fa-download ms-2"></i>
             </a>
         </div>
         <div class="cv-preview">
             <a href="#" data-bs-toggle="modal" data-bs-target="#cvImageModal" aria-label="Aperçu du CV">
-                <img src="img/cv.png" alt="Aperçu du CV" class="img-fluid rounded shadow-lg">
+                <img src="img/cv.png" alt="Aperçu du CV" class="img-fluid rounded shadow-lg" loading="lazy">
             </a>
         </div>
     </div>
@@ -132,41 +134,37 @@
     <div class="timeline-container">
         <div class="timeline-item left" data-aos="fade-right">
             <div class="timeline-content">
-                <h3 data-i18n="timeline_master_title">MASTER EN INTELLIGENCE ARTIFICIELLE (IA)</h3>
-                <p class="timeline-date" data-i18n="timeline_master_date">En cours – 2025 / 2026</p>
-                <p data-i18n="timeline_master_school">
-                    <strong>Faculté des Sciences Semlalia (FSSM) – Marrakech</strong>
-                </p>
+                <h3 data-i18n="timeline_master_title">MASTER EN INTELLIGENCE ARTIFICIELLE (EN COURS)</h3>
+                <p class="timeline-date" data-i18n="timeline_master_date">2025 – 2027</p>
+                <p data-i18n="timeline_master_school"><strong>Faculté des Sciences Semlalia – Université Cadi Ayyad, Marrakech</strong></p>
                 <p data-i18n="timeline_master_desc">
-                    Formation approfondie en Intelligence Artificielle couvrant le Machine Learning, le Deep Learning, le Traitement du Langage Naturel (NLP), la Vision par Ordinateur, l'Analyse de Données et les Systèmes Intelligents. 
-                    Développement de projets appliqués utilisant Python, TensorFlow, PyTorch et des techniques avancées d'apprentissage automatique. 
-                    Approche orientée recherche et innovation avec mise en pratique sur des problématiques réelles.
+                    Formation approfondie en Intelligence Artificielle couvrant le Machine Learning, le Deep Learning, le Traitement du Langage Naturel (NLP), la Vision par Ordinateur, l'Analyse de Données et les Systèmes Intelligents. Développement de projets appliqués utilisant Python, TensorFlow, PyTorch et des techniques avancées d'apprentissage automatique.
                 </p>
             </div>
         </div>
-        
+
         <div class="timeline-item left" data-aos="fade-right">
             <div class="timeline-content">
                 <h3 data-i18n="timeline_diploma_title">LICENCE PROFESSIONNELLE EN SYSTÈMES INFORMATIQUES EMBARQUÉS</h3>
-                <p class="timeline-date" data-i18n="timeline_diploma_date">Année universitaire : 2024 – 2025</p>
+                <p class="timeline-date" data-i18n="timeline_diploma_date">2024 – 2025</p>
                 <p data-i18n="timeline_diploma_school"><strong>École Supérieure de Technologie (EST) – Dakhla</strong></p>
-                <p data-i18n="timeline_diploma_desc">Formation spécialisée dans la conception, le développement et l'optimisation de systèmes embarqués. Acquisition de compétences en programmation bas niveau (C, assembleur), utilisation de microcontrôleurs (PIC), systèmes temps réel, Linux embarqué, IoT, et développement de solutions intelligentes à base de capteurs, interfaces et protocoles de communication. Approche projet centrée sur l'innovation et l'efficacité énergétique.</p>
+                <p data-i18n="timeline_diploma_desc">Formation spécialisée dans la conception, le développement et l'optimisation de systèmes embarqués. Acquisition de compétences en programmation bas niveau (C, assembleur), utilisation de microcontrôleurs (PIC, ESP32, Arduino), systèmes temps réel, Linux embarqué, IoT, et développement de solutions intelligentes à base de capteurs, interfaces et protocoles de communication.</p>
             </div>
         </div>
-        
+
         <div class="timeline-item right" data-aos="fade-left">
             <div class="timeline-content">
                 <h3 data-i18n="timeline_bts_title">BTS EN DÉVELOPPEMENT DES SYSTÈMES D'INFORMATION</h3>
+                <p class="timeline-date" data-i18n="timeline_bts_date">2022 – 2024</p>
                 <p data-i18n="timeline_bts_school"><strong>Lycée Qualifiant Lala Khadija – Dakhla</strong></p>
-                <p class="timeline-date" data-i18n="timeline_bts_date">Année universitaire : 2022 – 2024</p>
-                <p data-i18n="timeline_bts_desc">Formation axée sur le développement d'applications informatiques web, mobiles et bureautiques. Maîtrise des langages de programmation (Java, PHP, JavaScript, VB.NET), des bases de données (MySQL, SQL Server), ainsi que des outils de conception (UML, Merise). Développement de projets complets, de l'analyse des besoins jusqu'au déploiement, avec une forte orientation vers les systèmes d'information d'entreprise.</p>
+                <p data-i18n="timeline_bts_desc">Formation axée sur le développement d'applications informatiques web, mobiles et bureautiques. Maîtrise des langages de programmation (Java, PHP, JavaScript, VB.NET), des bases de données (MySQL, SQL Server), ainsi que des outils de conception (UML, Merise). Développement de projets complets, de l'analyse des besoins jusqu'au déploiement.</p>
             </div>
         </div>
-        
+
         <div class="timeline-item left" data-aos="fade-right">
             <div class="timeline-content">
                 <h3 data-i18n="timeline_bac_title">BACCALAURÉAT SCIENTIFIQUE – SCIENCES DE LA VIE ET DE LA TERRE (SVT)</h3>
-                <p class="timeline-date" data-i18n="timeline_bac_date">Année scolaire : 2021 – 2022</p>
+                <p class="timeline-date" data-i18n="timeline_bac_date">2021 – 2022</p>
                 <p data-i18n="timeline_bac_school"><strong>Lycée Al-Fath – Dakhla</strong></p>
                 <p data-i18n="timeline_bac_desc">Formation scientifique générale avec un focus sur la biologie, la géologie, la physique et les mathématiques. Développement de l'esprit analytique, de la rigueur scientifique et des compétences transversales utiles pour des études supérieures dans les domaines scientifiques et technologiques.</p>
             </div>
@@ -188,89 +186,94 @@
             <img src="img/project de stage/7.png" alt="Projet de stage : Site E-commerce" loading="lazy"/>
             <div class="project-info">
                 <h3 data-i18n="project_stage_title">Plateforme de Réclamations – Dakhla</h3>
-                <p data-i18n="project_stage_desc">Ce projet a été réalisé dans le cadre de mon stage à la Délégation du Travail de Dakhla. Il s'agit d'une application web destinée à remplacer les procédures traditionnelles sur papier...</p>
-                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+                <p data-i18n="project_stage_desc">Ce projet a été réalisé dans le cadre de mon stage à la Délégation du Travail de Dakhla. Il s'agit d'une application web destinée à remplacer les procédures traditionnelles sur papier, permettant aux employés de soumettre des réclamations en ligne et de suivre leur état.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
             </div>
         </div>
         <div class="project-item" data-project-id="projet-gestion" data-category="web" data-aos="fade-up" data-aos-delay="200">
             <img src="img/GOT/1.png" alt="Projet de gestion : Application Web de Direction" loading="lazy"/>
             <div class="project-info">
                 <h3 data-i18n="project_gestion_title">Interface Web – Plateforme de Streaming de Films</h3>
-                <p data-i18n="project_gestion_desc">Ce projet est une maquette front-end d'une plateforme de films, conçue pour présenter des affiches de films de manière visuellement attrayante...</p>
-                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+                <p data-i18n="project_gestion_desc">Ce projet est une maquette front-end d'une plateforme de films, conçue pour présenter des affiches de films de manière visuellement attrayante avec des animations et un design responsive.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
             </div>
         </div>
         <div class="project-item" data-project-id="projet-login" data-category="web" data-aos="fade-up" data-aos-delay="300">
             <img src="img/ECO/1.png" alt="Projet d'interface de connexion" loading="lazy"/>
             <div class="project-info">
                 <h3 data-i18n="project_login_title">Site E-commerce – Vente de Produits en Ligne</h3>
-                <p data-i18n="project_login_desc">Ce projet est une boutique en ligne que j'ai développée pour vendre mes propres produits. Il s'agit d'une plateforme e-commerce complète...</p>
-                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+                <p data-i18n="project_login_desc">Ce projet est une boutique en ligne que j'ai développée pour vendre mes propres produits. Il s'agit d'une plateforme e-commerce complète avec gestion de panier, paiement et administration.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
             </div>
         </div>
         <div class="project-item" data-project-id="projet-heart" data-category="embedded" data-aos="fade-up" data-aos-delay="400">
             <img src="img/SIE/HEART.jpg" alt="Projet Moniteur de Fréquence Cardiaque" loading="lazy"/>
             <div class="project-info">
                 <h3 data-i18n="project_heart_title">Moniteur de Fréquence Cardiaque</h3>
-                <p data-i18n="project_heart_desc">Ce projet consiste en la création d'un dispositif de santé connecté basé sur Arduino...</p>
-                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+                <p data-i18n="project_heart_desc">Ce projet consiste en la création d'un dispositif de santé connecté basé sur Arduino qui mesure la fréquence cardiaque et affiche les données sur un écran LCD.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
             </div>
         </div>
         <div class="project-item" data-project-id="projet-gas" data-category="embedded" data-aos="fade-up" data-aos-delay="100">
             <img src="img/SIE/GAZ.png" alt="Projet Détecteur de Fuite de Gaz" loading="lazy"/>
             <div class="project-info">
                 <h3 data-i18n="project_gas_title">Système de Détection de Fuite de Gaz – Arduino</h3>
-                <p data-i18n="project_gas_desc">Ce projet consiste à développer un système de sécurité domestique intelligent capable de détecter les fuites de gaz...</p>
-                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+                <p data-i18n="project_gas_desc">Ce projet consiste à développer un système de sécurité domestique intelligent capable de détecter les fuites de gaz et d'envoyer des alertes via buzzer et notification.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
             </div>
         </div>
         <div class="project-item" data-project-id="projet-irrigation" data-category="embedded" data-aos="fade-up" data-aos-delay="200">
             <img src="img/SIE/SLEEP MODE.jpg" alt="Projet Système d'Irrigation Solaire" loading="lazy"/>
             <div class="project-info">
                 <h3 data-i18n="project_irrigation_title">Système d'Irrigation Solaire Intelligent</h3>
-                <p data-i18n="project_irrigation_desc">Ce projet est un système d'arrosage automatique intelligent qui utilise un capteur d'humidité pour optimiser la consommation d'eau...</p>
-                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+                <p data-i18n="project_irrigation_desc">Ce projet est un système d'arrosage automatique intelligent qui utilise un capteur d'humidité pour optimiser la consommation d'eau, alimenté par énergie solaire.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
             </div>
         </div>
         <div class="project-item" data-project-id="projet-recommandation" data-category="AI" data-aos="fade-up" data-aos-delay="200">
             <img src="img/prolog/1.png" alt="Système de Recommandation Films & Séries" loading="lazy"/>
             <div class="project-info">
-                <h3 data-i18n="project_recommendation_title">
-                    Système Intelligent de Recommandation de Films & Séries
-                </h3>
-                <p data-i18n="project_recommendation_desc">
-                    Développement d'une application web intégrant un moteur d'inférence en Prolog pour générer des recommandations personnalisées de films et séries à partir des préférences utilisateur.
-                </p>
-                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+                <h3 data-i18n="project_recommendation_title">Système Intelligent de Recommandation de Films & Séries</h3>
+                <p data-i18n="project_recommendation_desc">Développement d'une application web intégrant un moteur d'inférence en Prolog pour générer des recommandations personnalisées de films et séries à partir des préférences utilisateur.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
             </div>
         </div>
         <div class="project-item" data-project-id="projet-prediction-maroc" data-category="AI" data-aos="fade-up" data-aos-delay="200">
             <img src="img/maroc/2.png" alt="Système de Prédiction des Matchs du Maroc" loading="lazy"/>
             <div class="project-info">
-                <h3 data-i18n="project_prediction_title">
-                    Système de Prédiction des Matchs de l'Équipe du Maroc
-                </h3>
-                <p data-i18n="project_prediction_desc">
-                    Application web développée avec Flask intégrant un modèle de Machine Learning pour prédire les résultats des matchs de l'équipe nationale du Maroc à partir de données historiques.
-                </p>
-                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+                <h3 data-i18n="project_prediction_title">Système de Prédiction des Matchs de l'Équipe du Maroc</h3>
+                <p data-i18n="project_prediction_desc">Application web développée avec Flask intégrant un modèle de Machine Learning pour prédire les résultats des matchs de l'équipe nationale du Maroc à partir de données historiques.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
             </div>
         </div>
         <div class="project-item" data-project-id="projet-sign-language" data-category="AI" data-aos="fade-up" data-aos-delay="200">
             <img src="img/sign/1.jpg" alt="Système de Reconnaissance du Langage des Signes" loading="lazy"/>
             <div class="project-info">
-                <h3 data-i18n="project_sign_lang_title">
-                    Système Intelligent de Reconnaissance du Langage des Signes
-                </h3>
-                <p data-i18n="project_sign_lang_desc">
-                    Système embarqué basé sur ESP32-CAM utilisant un modèle CNN pour la reconnaissance des lettres du langage des signes, avec application web Flask permettant d'assembler les caractères en mots.
-                </p>
-                <span class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</span>
+                <h3 data-i18n="project_sign_lang_title">Système Intelligent de Reconnaissance du Langage des Signes</h3>
+                <p data-i18n="project_sign_lang_desc">Système embarqué basé sur ESP32-CAM utilisant un modèle CNN pour la reconnaissance des lettres du langage des signes, avec application web Flask permettant d'assembler les caractères en mots.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
+            </div>
+        </div>
+        <div class="project-item" data-project-id="projet-nutrition" data-category="AI" data-aos="fade-up" data-aos-delay="200">
+            <img src="img/nutrition/1.png" alt="Système Intelligent d'Assistant Nutritionnel" loading="lazy"/>
+            <div class="project-info">
+                <h3 data-i18n="project_nutrition_title">Système Intelligent d'Assistant Nutritionnel</h3>
+                <p data-i18n="project_nutrition_desc">Développement d'une application basée sur l'IA qui identifie les aliments marocains écrits en français et en Darija, extrait les quantités alimentaires et estime l'apport calorique en utilisant des techniques de NLP. Le système intègre une entrée vocale et fournit un tableau de bord pour le suivi des données nutritionnelles par jour, semaine, mois et année.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
+            </div>
+        </div>
+        <div class="project-item" data-project-id="projet-chatbot-medical" data-category="AI" data-aos="fade-up" data-aos-delay="200">
+            <img src="img/chatbot/one.png" alt="Chatbot de Simulation de Patientes & Évaluateur IA" loading="lazy"/>
+            <div class="project-info">
+                <h3 data-i18n="project_chatbot_title">Chatbot de Simulation de Patientes & Évaluateur IA</h3>
+                <p data-i18n="project_chatbot_desc">Développement d'un chatbot permettant aux étudiants en médecine de simuler des consultations avec des patientes virtuelles selon différents scénarios cliniques. Intégration d'un évaluateur IA capable d'analyser les échanges, d'attribuer un score selon une grille d'évaluation et de générer un feedback personnalisé en français et en Darija. Développement d'une API pour la gestion des scénarios, des conversations et des résultats.</p>
+                <button type="button" class="view-details-btn" data-i18n="view_details_btn"><i class="fas fa-eye"></i> Voir Détails</button>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Project Detail Modal -->
 <div class="modal fade" id="projectDetailModal" tabindex="-1" aria-labelledby="projectDetailModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -279,7 +282,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="project-carousel swiper-container mb-4">
+                <div class="project-carousel swiper mb-4">
                     <div class="swiper-wrapper"></div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -299,6 +302,7 @@
     </div>
 </div>
 
+<!-- CV Modal -->
 <div class="modal fade" id="cvImageModal" tabindex="-1" aria-labelledby="cvImageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
@@ -313,6 +317,7 @@
     </div>
 </div>
 
+<!-- Skills Modal -->
 <div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
@@ -323,42 +328,51 @@
             <div class="modal-body">
                 <div class="skills-categories-container">
                     <div class="skill-category" data-aos="fade-up">
-                        <h3><i class="fas fa-code"></i> <span data-i18n="skill_cat_web_title">Développement Web et Logiciel</span></h3>
+                        <h3><i class="fas fa-code"></i> <span data-i18n="skill_cat_web_title">Programmation & Développement</span></h3>
                         <div class="skills-tags">
-                            <span class="skill-tag">HTML</span> <span class="skill-tag">CSS</span> <span class="skill-tag">JavaScript</span> <span class="skill-tag">PHP</span> <span class="skill-tag">Java</span> <span class="skill-tag">Python</span> <span class="skill-tag">C / C++</span> <span class="skill-tag">VB.NET</span>
+                            <span class="skill-tag">Python</span> <span class="skill-tag">Java</span> <span class="skill-tag">PHP</span> <span class="skill-tag">JavaScript</span> <span class="skill-tag">C / C++</span> <span class="skill-tag">HTML</span> <span class="skill-tag">CSS</span> <span class="skill-tag">VB.NET</span>
                         </div>
                     </div>
                     <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                        <h3><i class="fas fa-database"></i> <span data-i18n="skill_cat_db_title">Bases de Données & Modélisation</span></h3>
-                        <div class="skills-tags">
-                           <span class="skill-tag">MySQL</span> <span class="skill-tag">SQL Server</span>  <span class="skill-tag">UML</span> <span class="skill-tag">Merise</span>
-                        </div>
-                    </div>
-                    <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                        <h3><i class="fas fa-microchip"></i> <span data-i18n="skill_cat_embedded_title">Systèmes Embarqués & IoT</span></h3>
-                        <div class="skills-tags">
-                            <span class="skill-tag">Arduino</span> <span class="skill-tag">ESP32</span> <span class="skill-tag">Microcontrôleurs PIC</span> <span class="skill-tag">VHDL (FPGA)</span> <span class="skill-tag">Proteus</span> <span class="skill-tag">IoT</span>
-                        </div>
-                    </div>
-                    <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
-                        <h3><i class="fas fa-network-wired"></i> <span data-i18n="skill_cat_network_title">Systèmes, Réseaux</span></h3>
-                        <div class="skills-tags">
-                            <span class="skill-tag">Linux</span> <span class="skill-tag">Réseaux</span> 
-                        </div>
-                    </div>
-
-                    <div class="skill-category" data-aos="fade-up" data-aos-delay="500">
-                        <h3><i class="fas fa-brain"></i> <span data-i18n="skill_cat_ai_title">Intelligence Artificielle & Data Science</span></h3>
+                        <h3><i class="fas fa-brain"></i> <span data-i18n="skill_cat_ai_title">Intelligence Artificielle</span></h3>
                         <div class="skills-tags">
                             <span class="skill-tag">Machine Learning</span>
                             <span class="skill-tag">Deep Learning</span>
                             <span class="skill-tag">NLP</span>
-                            <span class="skill-tag">Computer Vision</span>
-                            <span class="skill-tag">Pandas</span>
-                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Vision par Ordinateur</span>
+                            <span class="skill-tag">Réseaux de Neurones</span>
                             <span class="skill-tag">TensorFlow</span>
-                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">PyTorch</span>
                             <span class="skill-tag">Prolog</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                        <h3><i class="fas fa-database"></i> <span data-i18n="skill_cat_db_title">Bases de Données & Modélisation</span></h3>
+                        <div class="skills-tags">
+                           <span class="skill-tag">SQL</span> <span class="skill-tag">MySQL</span> <span class="skill-tag">UML</span> <span class="skill-tag">Conception des systèmes</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                        <h3><i class="fas fa-microchip"></i> <span data-i18n="skill_cat_embedded_title">Systèmes Embarqués & IoT</span></h3>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Raspberry Pi</span> <span class="skill-tag">ESP32</span> <span class="skill-tag">Arduino</span> <span class="skill-tag">ESP32-CAM</span> <span class="skill-tag">PIC</span> <span class="skill-tag">IoT</span> <span class="skill-tag">IA embarquée</span> <span class="skill-tag">Microcontrôleurs PIC</span> <span class="skill-tag">Intégration des capteurs</span> <span class="skill-tag">Systèmes temps réel</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                        <h3><i class="fas fa-chart-bar"></i> <span data-i18n="skill_cat_bigdata_title">Big Data</span></h3>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Écosystème Hadoop</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="500">
+                        <h3><i class="fas fa-tools"></i> <span data-i18n="skill_cat_tools_title">Outils & Design</span></h3>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">Excel</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Adobe Premiere Pro</span>
+                            <span class="skill-tag">Proteus</span>
+                            <span class="skill-tag">VS Code</span>
                         </div>
                     </div>
                 </div>
@@ -386,7 +400,7 @@
         <div class="mb-3" data-aos="fade-up" data-aos-delay="300">
             <textarea class="form-control" id="message" name="message" rows="5" data-i18n-placeholder="contact_message_placeholder" placeholder="Votre Message..." required></textarea>
         </div>
-        <div id="form-result" class="mb-3"></div>
+        <div id="form-result" class="mb-3" role="status" aria-live="polite"></div>
         <button type="submit" class="btn btn-send-message btn-glow" data-aos="fade-up" data-aos-delay="400" data-i18n="send_message_btn">
             Envoyer le Message <i class="fas fa-paper-plane ms-2"></i>
         </button>
@@ -396,7 +410,6 @@
         <p data-i18n="social_intro">Retrouvez-moi également sur :</p>
         <a href="https://www.linkedin.com/in/abderrahim-es-sousy-57701031b/" target="_blank" rel="noopener noreferrer" aria-label="Mon profil LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
         <a href="https://github.com/abderrahimessousy/" target="_blank" rel="noopener noreferrer" aria-label="Mon profil GitHub"><i class="fab fa-github fa-2x"></i></a>
-        <a href="https://www.instagram.com/abdowny/" target="_blank" rel="noopener noreferrer" aria-label="Mon profil Instagram"><i class="fab fa-instagram fa-2x"></i></a>
     </div>
 </section>
 
